@@ -9,28 +9,23 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.TableGenerator;
 import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "AUTHOR_TBL")
 public class Author {
 
     @Id
-    @GeneratedValue(
-      strategy = GenerationType.TABLE,
-      generator = "author_id_gen"
-    )
-    @TableGenerator(
-            name = "author_id_gen",
-            table = "id_generator",
-            pkColumnName = "id_name",
-            valueColumnName = "id_value",
-            allocationSize = 1
-    )
+    @GeneratedValue
     private Integer id;
 
     @Column(
