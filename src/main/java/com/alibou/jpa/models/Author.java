@@ -5,23 +5,16 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
-@Table(name = "AUTHOR_TBL")
-public class Author {
-
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class Author extends BaseEntity{
 
     @Column(
             name = "f_name",
