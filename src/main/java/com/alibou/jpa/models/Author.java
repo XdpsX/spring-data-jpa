@@ -1,5 +1,6 @@
 package com.alibou.jpa.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -55,7 +56,8 @@ public class Author extends BaseEntity{
     )
     private LocalDateTime lastModified;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Course> courses;
 
 }
