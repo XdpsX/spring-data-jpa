@@ -4,6 +4,7 @@ import com.alibou.jpa.models.Author;
 import com.alibou.jpa.models.Video;
 import com.alibou.jpa.repositories.AuthorRepository;
 import com.alibou.jpa.repositories.VideoRepository;
+import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,18 +23,27 @@ public class JpaApplication {
 			VideoRepository videoRepository
 	) {
 		return args -> {
-				/*var author = Author.builder()
-						.firstName("alibou")
-						.lastName("alibou")
-						.age(34)
-						.email("contact@aliboucoding.com")
+			for (int i = 0; i < 50; i++) {
+				Faker faker = new Faker();
+				var author = Author.builder()
+						.firstName(faker.name().firstName())
+						.lastName(faker.name().lastName())
+						.age(faker.number().numberBetween(20, 80))
+						.email(faker.name().username() + "@aliboucoding.com")
 						.build();
-				repository.save(author);*/
-			var video = Video.builder()
-					.name("abc")
-					.length(5)
+//				 repository.save(author);
+			}
+
+			// update author with ID = 1
+			var author = Author.builder()
+					.id(1)
+					.firstName("Ali")
+					.lastName("Bouali")
+					.age(34)
+					.email("contact@aliboucoding.com")
 					.build();
-			videoRepository.save(video);
+			// repository.save(author);
+
 		};
 	}
 
