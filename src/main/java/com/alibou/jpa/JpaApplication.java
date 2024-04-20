@@ -44,6 +44,12 @@ public class JpaApplication {
 					.build();
 			// repository.save(author);
 
+			// update Author a set a.age = 22 where a.id = 1
+//			 repository.updateAuthor(100, 1);
+
+			// update all authors
+//			 repository.updateAllAuthorsAges(99);
+
 		};
 	}
 
